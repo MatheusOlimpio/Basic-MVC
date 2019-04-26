@@ -1,0 +1,1 @@
+<h1>Alguma coisa de html <?php echo $nome; ?></h1>
