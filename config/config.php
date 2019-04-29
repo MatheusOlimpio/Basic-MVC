@@ -1,8 +1,10 @@
 <?php
 require 'environment.php';
+
+define("BASE_URL", "http://localhost/mvc/src");
+
 global $config;
 $config = array();
-
 if(ENVIRONMENT == 'development'){
     //Conexão local
     $config['dbname'] = 'db_loja';
