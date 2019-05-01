@@ -12,3 +12,20 @@ nav{
 nav ul li a{
     color: white;
 }
+nav ul li a:hover{
+    color: black;
+}
+.container-home{
+    height: 100vh;
+    width: 100%;
+    background-image: url('../img/fundo.gif');
+    background-repeat: no-repeat;
+    background-size: cover; 
+}
+#gif-template{
+    height: 30px;
+    width: 50px;
+    background-image: url('../img/php.gif');
+    background-repeat: no-repeat;
+    background-size: cover; 
+}

@@ -5,7 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>MVC - MATHEUS</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
     <link rel="stylesheet" href="<?php echo BASE_URL; ?>/assets/css/foundation.css">
     <link rel="stylesheet" href="<?php echo BASE_URL; ?>/assets/css/app.css">
 </head>
@@ -13,7 +14,7 @@
     <header>
         <nav>
             <ul class="menu align-center">
-                <li><a href="home">Bem vindo ao meu Framework Mvc</a></li>
+                <li><a href="home">Bem vindo ao Storm MVC </a><span id="gif-template"></span></li>
             </ul>
         </nav>
     </header>

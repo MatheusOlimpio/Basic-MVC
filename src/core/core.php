@@ -8,12 +8,6 @@ class Core {
         $url = explode('index.php', $_SERVER['PHP_SELF']);
         $url = end($url);
         $params = array();
-        // $urlDir = 'http://localhost/mvc/src/Controller/homeController.php';
-        // if(file_exists($urlDir)){
-        //     echo 'existe';
-        // }else{
-        //     echo 'nao';
-        // }
 
         if(!empty($url)){
             // se foi digitado alguma coisa na url
@@ -47,21 +41,26 @@ class Core {
         }
         //nao iremos instanciar o controller, ele sera herdado de um objetivo
         require_once 'src/core/controller.php';
-        //O php substitui esse codigo pelo nome do controller
-        $c = new $currentController();
+
+        $actualController = 'src/Controllers/'.$currentController.'.php';
+        if(file_exists($actualController)){
+
+            //O php substitui esse codigo pelo nome do controller
+            $c = new $currentController();
+            call_user_func_array(array($c, $currentAction), $params);
+        }else{
+            $currentController = 'notFoundController';
+            $c = new $currentController();
+            
+            $currentAction = 'index';
+            call_user_func_array(array($c, $currentAction), $params);
+        }
+
         // Funcao para passar os parametros da url para o controller
         // Passamos o controler, a action(metodo), e os nossos parametros
         // $url_base = BASE_URL;
-        // $actualController = $url_base.'/Controllers/'.$currentController.'.php';
-
-        // if(file_exists($actualController)){
-        //     call_user_func_array(array($c, $currentAction), $params);
-        // }else{
-        //     $currentController = 'notFoundController';
-        //     $currentAction = 'index';
-        //     
-        // }
-        call_user_func_array(array($c, $currentAction), $params);
+        
+        // call_user_func_array(array($c, $currentAction), $params);
     }
 } 
 ?>
