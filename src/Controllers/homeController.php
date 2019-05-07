@@ -1,7 +1,13 @@
 <?php 
 class homeController extends controller{
     public function __construct(){
+        parent::__construct();
         
+        $user = new usuarios();
+        if(!$user->logged()){
+            header("Location: /mvc/login");
+            echo "<script>alert('Voce não tem permissão para acessar o sistema');</script>";
+        }
     }
 
     public function index(){

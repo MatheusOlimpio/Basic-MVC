@@ -1,5 +1,8 @@
 <?php
 class controller{
+    public function __construct(){
+        
+    }
     //quando a view for carregada, vamos enviar o seu nome
     // e os dados a serem enviados
     //Foi criado um array para caso o usuario nao enviar nada

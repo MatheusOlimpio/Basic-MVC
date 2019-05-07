@@ -36,7 +36,10 @@
         } 
         public function getDataCad(){
             return $this->data_Cad;
-        }         
+        } 
+        public function logged(){
+            return true;
+        }        
         public function selectUsuarios(){
             $array = array();
                 $sql = "SELECT * FROM usuarios";
