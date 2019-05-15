@@ -1,3 +1,9 @@
+<?php
+if(isset($_SESSION['twlg'])){
+    $nome = $_SESSION['twlg']['nome'];
+}
+
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,7 +20,8 @@
     <header>
         <nav>
             <ul class="menu align-center">
-                <li><a href="home">Bem vindo ao Storm MVC </a><span id="gif-template"></span></li>
+                <li><a href="home">Bem vindo, <?php echo $nome ?></li>
+                <a type="button" class="button warning" href="logout">Logout</a>
             </ul>
         </nav>
     </header>

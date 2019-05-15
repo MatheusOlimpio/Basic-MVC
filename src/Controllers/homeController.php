@@ -6,22 +6,19 @@ class homeController extends controller{
         $user = new usuarios();
         if(!$user->logged()){
             header("Location: /mvc/login");
-            echo "<script>alert('Voce não tem permissão para acessar o sistema');</script>";
+            echo "<script>console.log('Voce não tem permissão para acessar o sistema');</script>";
         }
     }
 
     public function index(){
         $usuario = new Usuarios();
-        $usuario->setNome('Matheus');
-        
-        $dados = array(
-            'nome' => $usuario->getNome()
-        );
+        $dados = [
+            "id" => $_SESSION['twlg']['id'],
+            "nome" => $_SESSION['twlg']['nome'],
+            "email" => $_SESSION['twlg']['email']
+        ];
         $this->loadTemplate('home', $dados);
     }
-    public function sobre(){
-        $dados = array();
-        $this->loadTemplate('sobre', $dados);
-    }
+
 }
 ?>
