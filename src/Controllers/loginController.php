@@ -13,7 +13,7 @@ class loginController extends controller{
             if(!empty($email) && !empty($senha)){
 
                 $u = new Usuarios();
-
+                
                 if($u->autenticaLogin($email, $senha)){
                     $_SESSION['twlg'] = $u->selectUsuarioLogado($email); 
                     header('Location: /mvc/home');
@@ -36,15 +36,13 @@ class loginController extends controller{
         if(isset($_POST['nome']) && !empty($_POST['nome'])){
             $nome = addslashes($_POST['nome']);
             $email = addslashes($_POST['email']);
-            $usuario = addslashes($_POST['usuario']);
             $senha = md5($_POST['senha']);
 
             if(!empty($nome) && !empty($email) && !empty($senha)){
                 $u = new Usuarios();
                 
                 if(!$u->usuarioExiste($email)){
-                    $_SESSION['twlg'] = $u->insertUsuarios($nome, 
-                    $usuario, $email, $senha);
+                    $_SESSION['twlg'] = $u->insertUsuarios($nome, $email, $senha);
                     header('Location: /mvc/home');
                 }else{
                     $dados['aviso'] = "Este usuário ja existe";

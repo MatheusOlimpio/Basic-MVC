@@ -2,7 +2,6 @@
     class Usuarios extends model{
         private $id;
         private $nome;
-        private $usuario;
         private $senha;
         private $data_Cad;
         private $email;
@@ -22,12 +21,6 @@
         }
         public function getNome(){
             return $this->nome;
-        }
-        public function setUsuario($user){
-            $this->usuario = $user;
-        }
-        public function getUsuario(){
-            return $this->usuario;
         }
         public function setSenha($senha){
             $this->senha = $senha;
@@ -73,17 +66,16 @@
                 }         
                 return $array;
         }
-        public function insertUsuarios($nome, $email, $usuario,$senha){
-            $sql = "INSERT INTO usuarios(nome, usuario, email, senha) 
-            VALUES(:nome, :usuario,:email,:senha);";
+        public function insertUsuarios($nome, $email,$senha){
+            $sql = "INSERT INTO usuarios(nome, email, senha) 
+            VALUES(:nome,:email,:senha);";
             $stmt = $this->db->prepare($sql);
             $stmt->bindParam(':nome', $nome, PDO::PARAM_STR);
-            $stmt->bindParam(':usuario', $usuario, PDO::PARAM_STR);
             $stmt->bindParam(':email', $email, PDO::PARAM_STR);
             $stmt->bindParam(':senha', $senha, PDO::PARAM_STR);
             $stmt->execute();
             
-            if($stmt == TRUE){
+            if($stmt->rowCount > 0){
                 $id = $this->db->lastInsertId();
                 return $id;
             }else{
@@ -91,12 +83,14 @@
             }
         }
         public function usuarioExiste($email){
+
             $sql = "SELECT email FROM usuarios WHERE email = :email";
             $stmt = $this->db->prepare($sql);
             $stmt->bindParam(':email', $email, PDO::PARAM_STR);
             $stmt->execute();
-
-            if($stmt == TRUE){
+              
+            if($stmt->rowCount > 0){
+                echo 'foi';
                 return true;
             }else{
                 return false;

@@ -1,8 +1,6 @@
 <form method="POST">
     <label for="">Nome</label>
     <input name="nome" type="text">
-    <label for="">Usuario</label>
-    <input name="usuario" type="text">
     <label for="">Email</label>
     <input name="email" type="email">
     <label for="">senha</label>

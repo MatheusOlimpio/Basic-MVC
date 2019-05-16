@@ -19,9 +19,15 @@ if(isset($_SESSION['twlg'])){
 <body>
     <header>
         <nav>
-            <ul class="menu align-center">
-                <li><a href="home">Bem vindo, <?php echo $nome ?></li>
-                <a type="button" class="button warning" href="logout">Logout</a>
+            <ul class="menu" style="justify-content: space-between;">
+                <div style="display:flex; flex-direction:row; flex-wrap:wrap;">
+                    <li><a href="home">Home</a></li>
+                    <li><a href="usuarios">Usuarios</a></li>
+                </div>
+                <div style="display:flex; flex-direction:row; flex-wrap:wrap;">
+                    <li class="text-left"><a href="home">Bem vindo(a), <?php echo $nome ?></li>
+                    <a type="button" class="button warning" href="logout">Logout</a>
+                </div>
             </ul>
         </nav>
     </header>
