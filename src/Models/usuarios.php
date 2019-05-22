@@ -53,6 +53,19 @@
                 }
             return $array;
         }
+        public function selectId($id){
+            $array = array();
+            $sql = "SELECT id, email, nome FROM usuarios WHERE id = :id";
+            $stmt = $this->db->prepare($sql);
+            $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+            $stmt->execute();
+            if($stmt->rowCount() > 0){
+                while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+                   $array = $row;
+                }
+            }         
+            return $array;
+    }
         public function selectUsuarioLogado($email){
                 $array = array();
                 $sql = "SELECT id, email, nome FROM usuarios WHERE email = :email";
@@ -75,9 +88,10 @@
             $stmt->bindParam(':senha', $senha, PDO::PARAM_STR);
             $stmt->execute();
             
-            if($stmt->rowCount > 0){
+            if($stmt->rowCount() > 0){
                 $id = $this->db->lastInsertId();
-                return $id;
+                $dados = $this->selectId($id);
+                return $dados;
             }else{
                 return false;
             }
@@ -89,8 +103,7 @@
             $stmt->bindParam(':email', $email, PDO::PARAM_STR);
             $stmt->execute();
               
-            if($stmt->rowCount > 0){
-                echo 'foi';
+            if($stmt->rowCount() > 0){
                 return true;
             }else{
                 return false;
