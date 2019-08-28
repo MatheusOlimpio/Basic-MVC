@@ -7,15 +7,15 @@ global $config;
 $config = array();
 if(ENVIRONMENT == 'development'){
     //Conexão local
-    $config['dbname'] = 'db_loja';
-    $config['host'] = 'localhost';
-    $config['dbuser'] = 'root';
-    $config['dbpass'] = '';
+    $config['dbname'] = 'nomebanco';
+    $config['host'] = 'nomehost';
+    $config['dbuser'] = 'usuario';
+    $config['dbpass'] = 'senha';
 }else{
     //Conexão de producao
-    // $config['dbname'] = 'teste';
-    // $config['host'] = 'localhost';
-    // $config['dbuser'] = 'root';
-    // $config['dbpass'] = 'root'; 
+    $config['dbname'] = 'nomebanco';
+    $config['host'] = 'nomehost';
+    $config['dbuser'] = 'usuarios';
+    $config['dbpass'] = 'senha'; 
 }
 ?>
