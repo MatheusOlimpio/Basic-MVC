@@ -8,10 +8,6 @@ class controller{
     //Foi criado um array para caso o usuario nao enviar nada
     // O array e criado, e nao iremos ter problemas
     public function loadView($viewName, $viewData = array()){
-        // $viewData = array(
-        //     'nome' => 'Matheus',
-        //     'idade' => '21'
-        // );
         // extract transforma os elementos do array em variaveis
         extract($viewData);
         include 'src/views/'.$viewName.'.php';
